@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  discord-bot:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: amazon-price-monitor-bot
+    env_file:
+      - .env
+    volumes:
+      - /Docker/BotDiscord:/app
+      - /Docker/BotDiscord:/app/price_monitor.db
+    restart: unless-stopped
